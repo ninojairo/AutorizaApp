@@ -1,0 +1,37 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">AuthorApp</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" RouterLinkActive = "active">
+        <a class="nav-link" [routerLink]="['home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" RouterLinkActive = "active">
+        <a class="nav-link" [routerLink]="['precios']">Pricing</a>
+      </li>
+      <li class="nav-item" RouterLinkActive = "active" *ngIf="authService.isAuthenticated()" >
+        <a class="nav-link" [routerLink]="['protected']">Protegida</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+      <button 
+        (click) = "login()"
+        *ngIf="!authService.isAuthenticated()"
+        type="button"
+        class="btn btn-outline-primary">
+        Login
+
+      </button>
+      <button 
+        (click) = "logout()"
+        *ngIf="authService.isAuthenticated()"
+        type="button"
+        class="btn btn-outline-primary">
+        logout
+
+      </button>
+    </span>
+  </div>
+</nav>
